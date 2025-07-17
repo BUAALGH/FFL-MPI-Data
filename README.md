@@ -8,4 +8,5 @@ The dataset includes both simulated datasets and measured datasets, where:
   
 - **Simulated datasets**: Use MNIST as digital phantoms, including 60,000 training samples and 10,000 testing samples. These simulated datasets are input into a simulation framework built based on the MJA model.
 
-This project provides example codes for loading the dataset, available in both MATLAB and Python formats.
+This project provides example codes for loading the dataset, available in both MATLAB and Python formats. To access and download the FFL-MPI-Data dataset, please visit the official website of MPILab:
+www.mpilab.net
