@@ -10,3 +10,11 @@ The dataset includes both simulated datasets and measured datasets, where:
 
 This project provides example codes for loading the dataset, available in both MATLAB and Python formats. To access and download the FFL-MPI-Data dataset, please visit the official website of MPILab:
 www.mpilab.net
+
+This project provides both `.mat` and `.py` codes, where:
+
+1. `measured_sensor` is used to process data in the sensor domain, including procedures such as reading voltage signals, STFT processing, and FBP processing.
+
+2. `measured_sinogram_con` is designed for processing data in the sinogram domain of measured datasets, which involves reading sinograms and reconstructing images via FBP.
+
+3. `simulated_sinogram_con` is utilized to handle data in the sinogram domain of simulated datasets, including reading sinograms and performing FBP-based image reconstruction.
