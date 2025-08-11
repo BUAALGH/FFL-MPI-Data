@@ -1,7 +1,8 @@
 # FFL-MPI-Data
 
 This is FFL-MPI-Data, a public projection imaging dataset for field-free line magnetic particle imaging.
-Corresponding Authors: Guanghui Li, Haicheng Du
+The FFL-MPI-Data was available at Zenodo: https://doi.org/10.5281/zenodo.16563447
+Authors: Guanghui Li(liguanghui@buaa.edu.cn), Haicheng Du
 
 The dataset includes both simulated datasets and measured datasets, where:
 
