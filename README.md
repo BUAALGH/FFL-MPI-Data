@@ -1,27 +1,72 @@
-# FFL-MPI-Data
+🌟 FFL-MPI-Data: Magnetic Particle Imaging (MPI) Projection Dataset
+📝 Project Overview (Introduction)
+This repository serves as the official project page for FFL-MPI-Data, a public projection imaging dataset specifically designed for Field-Free Line Magnetic Particle Imaging (FFL-MPI) research.
 
-This is FFL-MPI-Data, a public projection imaging dataset for field-free line magnetic particle imaging.
-The FFL-MPI-Data was available at Zenodo: https://doi.org/10.5281/zenodo.16563447
-Authors: Guanghui Li(liguanghui@buaa.edu.cn), Haicheng Du
+The FFL-MPI-Data provides a comprehensive collection of both measured and simulated data, offering critical resources for developing and evaluating image reconstruction algorithms, especially for challenging tasks like limited-angle and sparse-angle reconstruction.
 
-The dataset includes both simulated datasets and measured datasets, where:
+Dataset Availability: The full dataset is available on Zenodo: https://doi.org/10.5281/zenodo.16563447
 
-- **Measured datasets**: Collected based on a self-developed open-sided FFL-MPI system, featuring 100 3D-printed shape phantoms. The phantoms are filled with synomag (diameter: 70nm). The measured datasets provide voltage signals, sinograms, and image data of all phantoms, as well as information on the 2nd to 7th harmonics.
-  
-- **Simulated datasets**: Use MNIST as digital phantoms, including 60,000 training samples and 10,000 testing samples. These simulated datasets are input into a simulation framework built based on the MJA model.
+Authors: Guanghui Li (liguanghui@buaa.edu.cn), Haicheng Du
 
-This project provides example codes for loading the dataset, available in both MATLAB and Python formats:
+💾 FFL-MPI-Data Content Breakdown
+The dataset is categorized into two main groups:
 
-This project provides both `.mat` and `.py` codes, where:
+1. Measured Datasets
+Acquisition System: Collected using a self-developed, open-sided FFL-MPI system.
 
-1. `measured_sensor` is used to process data in the sensor domain, including procedures such as reading voltage signals, STFT processing, and FBP processing.
+Phantoms: Features 100 unique 3D-printed shape phantoms. The phantoms are filled with synomag magnetic nanoparticles (diameter: 70nm).
 
-2. `measured_sinogram_con` is designed for processing data in the sinogram domain of measured datasets, which involves reading sinograms and reconstructing images via FBP.
+Data Included: Provides the complete data pipeline:
 
-3. `simulated_sinogram_con` is utilized to handle data in the sinogram domain of simulated datasets, including reading sinograms and performing FBP-based image reconstruction.
+Voltage Signals (Raw Sensor Data).
 
-FFL-MPI-Data construction workflow:
-<img width="4082" height="2748" alt="论文Figures_06" src="https://github.com/user-attachments/assets/31f7cbbd-02a1-45d1-b091-d27324f8d104" />
+Sinograms.
 
-Examples of simulated dataset and measured data images：
-<img width="4082" height="1856" alt="论文Figures_09" src="https://github.com/user-attachments/assets/2771144f-9aa5-4e0b-bc1f-b6c10ae48a02" />
+Reconstructed Image Data.
+
+Detailed information on the 2nd to 7th harmonics of the voltage signals.
+
+2. Simulated Datasets
+Digital Phantoms: Uses the MNIST handwritten digit dataset as the basis for digital phantoms.
+
+Scale: Includes 60,000 training samples and 10,000 testing samples.
+
+Simulation Model: The digital phantoms are processed using a simulation framework built based on the MJA model (Magnetic Joint Action Model), ensuring realism in the simulated signal responses.
+
+📂 FFL-MPI-Data Construction Workflow
+The construction of the FFL-MPI-Data involves careful processing from raw signal acquisition (measured) or MJA modeling (simulated) to the final sinogram and image domains.
+
+🛠 Project Codes & Examples
+This project provides example codes for loading and processing the dataset, available in both MATLAB and Python formats (.mat and .py files).
+
+1. Sensor Domain Processing (Measured Data)
+measured_sensor
+
+Purpose: To process data in the sensor domain (raw voltage signals).
+
+Procedures: Includes reading voltage signals, Short-Time Fourier Transform (STFT) processing, and Filtered Back Projection (FBP) processing on the raw data.
+
+2. Sinogram Domain Processing (Measured Data)
+measured_sinogram_con
+
+Purpose: Designed for processing data in the sinogram domain of the measured datasets.
+
+Procedures: Involves reading the pre-built sinograms and reconstructing images via FBP.
+
+3. Sinogram Domain Processing (Simulated Data)
+simulated_sinogram_con
+
+Purpose: Utilized to handle data in the sinogram domain of the simulated datasets.
+
+Procedures: Includes reading the sinograms and performing FBP-based image reconstruction.
+
+🖼 Data Examples
+The data encompasses a wide variety of reconstructed images, ranging from controlled digital phantoms (MNIST) in the simulated dataset to complex physical phantoms in the measured dataset.
+
+📧 Project Contact
+Project Contact: Guanghui Li (liguanghui@buaa.edu.cn)
+
+🙏 Acknowledgement
+We sincerely appreciate your interest in the FFL-MPI-Data project. We hope this dataset will significantly contribute to FFL-MPI image reconstruction research, addressing the need for high-quality, domain-specific data.
+
+If you have any suggestions, questions, or discover any errors, please feel free to contact us!
