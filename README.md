@@ -111,6 +111,8 @@ This module presents deep learning usage examples, typically utilizing the simul
 The data encompasses a wide variety of reconstructed images, ranging from controlled digital phantoms (MNIST) in the simulated dataset to complex physical phantoms in the measured dataset.
 
 ---
+![论文Figures_09](https://github.com/user-attachments/assets/8f19adc6-183e-49db-bef7-28a9a4ccff68)
+
 
 ## 📧 Project Contact
 
