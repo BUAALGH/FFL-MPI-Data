@@ -36,7 +36,6 @@ The dataset is categorized into two main groups:
 
 * **Digital Phantoms:** Uses the **MNIST handwritten digit dataset** as the basis for digital phantoms.
 * **Scale:** Includes **60,000 training samples** and ​**10,000 testing samples**​.
-* **Simulation Model:** The digital phantoms are processed using a **simulation framework built based on the MJA model** (Magnetic Joint Action Model), ensuring realism in the simulated signal responses.
 
 ---
 
