@@ -16,7 +16,7 @@ https://doi.org/10.5281/zenodo.16563447
 
 ### Authors
 
-* **Guanghui Li** (liguanghui@buaa.edu.cn), **Haicheng Du**, Ziwei Chen, et al
+* **Guanghui Li** (liguanghui@buaa.edu.cn), **Haicheng Du** (haichengdu@buaa.edu.cn), **Ziwei Chen**, et al
 
 ### FFL-MPI-Data Content Breakdown
 
