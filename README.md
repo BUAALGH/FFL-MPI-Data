@@ -16,8 +16,7 @@ https://doi.org/10.5281/zenodo.16563447
 
 ### Authors
 
-* **Guanghui Li** (liguanghui@buaa.edu.cn)
-* **Haicheng Du**
+* **Guanghui Li** (liguanghui@buaa.edu.cn), **Haicheng Du**, Ziwei Chen, et al
 
 ### FFL-MPI-Data Content Breakdown
 
@@ -53,36 +52,44 @@ The repository is organized to provide clear access to reconstruction, simulatio
 
 ```
 FFL-MPI-Data/
-├── 1_reconstruction_codes/      # Signal Processing and Traditional Reconstruction (MATLAB/Python)
-│   ├── measured_sensor.* # Process raw voltage signals (STFT, FBP)
-│   ├── measured_sinogram_con.* # Process measured sinograms (FBP reconstruction)
-│   └── simulated_sinogram_con.* # Process simulated sinograms (FBP reconstruction)
-├── 2_simulation_framework/       # Calibrated MPI simulation framework
-│   ├── mpi_simulator.py        # MPI signal and sinogram generator
-│   ├── calibration_params.json # Calibration parameters file
-│   └── generate_data.py        # Script for batch generation of synthetic data
-├── 3_deep_learning_demo/       # Deep learning based reconstruction examples
-│   ├── limited_angle_task/     # Limited-Angle Reconstruction Task
-│   └── sparse_angle_task/      # Sparse-Angle Reconstruction Task
-├── data/                       # Dataset Placeholder/Example Link
-└── README.md                   # This file
+├── 1_reconstruction_codes/         # Signal Processing and Traditional Reconstruction (MATLAB/Python)
+│   ├── measured_sensor.*           # Process raw voltage signals (signal -> STFT -> sinogram -> FBP -> image)
+│   ├── measured_sinogram.*         # Process measured sinograms (sinogram -> FBP -> image)
+│   └── simulated_sinogram.*        # Process simulated sinograms (sinogram -> FBP -> image)
+├── 2_simulation_framework/         # Calibrated MPI simulation framework
+│   ├── main_function.m             # main function to run
+│   ├── Datasets                    # MNIST train & test dataset and lables
+│   ├── Noise                       # FFL-MPI Scanner background noises with harmonics image
+|   ├── Models                      # SPIOs model with Langevin function
+|   ├── Modules                     # functinal modules: Basic_setup, Magnetic_Field_Generation, Signal_Generation, Visualization_2
+|   └── Phantom_Photos              # example phantom photos
+├── 3_deep_learning_demo/           # Deep learning based reconstruction examples
+│   ├── limited_angle_task/         # Limited-Angle Reconstruction Task
+│   └── sparse_angle_task/          # Sparse-Angle Reconstruction Task
+└── README.md                       # This file
 ```
 
 ---
 
 ## 🛠 Code Usage and Functionality
 
-This project provides example codes for loading and processing the dataset, available in both **MATLAB** (`.mat`) and **Python** (`.py`) formats.
+This project provides example codes for loading and processing the dataset.
 
-### 1. `1_reconstruction_codes`: Signal Processing and Traditional Image Reconstruction
+### 1. `reconstruction_codes`: Signal Processing and Image Reconstruction Example Codes
 
 This module contains scripts that demonstrate loading the dataset and performing basic reconstruction using traditional FBP methods across different data domains.
 
 | **Script Name**        | **Data Domain**   | **Dataset Type** | **Key Procedures**                      |
 | ------------------------------ | ------------------------- | ------------------------ | ----------------------------------------------- |
 | `measured_sensor`        | Sensor Domain (Voltage) | Measured               | Reading Voltage Signals, STFT Processing, FBP |
-| `measured_sinogram_con`  | Sinogram Domain         | Measured               | Reading Sinograms, FBP-based Reconstruction   |
-| `simulated_sinogram_con` | Sinogram Domain         | Simulated              | Reading Sinograms, FBP-based Reconstruction   |
+| `measured_sinogram`      | Sinogram Domain         | Measured               | Reading Sinograms, FBP-based Reconstruction   |
+| `simulated_sinogram`     | Sinogram Domain         | Simulated              | Reading Sinograms, FBP-based Reconstruction   |
+If the user is processing voltage signals from the measured dataset, use `measured_sensor.m`;  
+if processing sinograms from the measured dataset, use `measured_sinogram.m`;  
+if processing sinograms from the simulated dataset, use `simulated_sinogram.m`.  
+
+The user only needs to modify their own data storage path to complete the image reconstruction.  
+Our sample code provides a single-data processing method. If batch data processing is required, simply add an additional loop for handling.
 
 ### 2. Simulation Framework `2_simulation_framework`
 
