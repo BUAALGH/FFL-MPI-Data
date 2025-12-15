@@ -80,10 +80,11 @@ This project provides example codes for loading and processing the dataset.
 This module contains scripts that demonstrate loading the dataset and performing basic reconstruction using traditional FBP methods across different data domains.
 
 | **Script Name**        | **Data Domain**   | **Dataset Type** | **Key Procedures**                      |
-| ------------------------------ | ------------------------- | ------------------------ | ----------------------------------------------- |
+| ---------------------- | ------------------------- | ------------------------ | ----------------------------------------------- |
 | `measured_sensor`        | Sensor Domain (Voltage) | Measured               | Reading Voltage Signals, STFT Processing, FBP |
 | `measured_sinogram`      | Sinogram Domain         | Measured               | Reading Sinograms, FBP-based Reconstruction   |
 | `simulated_sinogram`     | Sinogram Domain         | Simulated              | Reading Sinograms, FBP-based Reconstruction   |
+
 If the user is processing voltage signals from the measured dataset, use `measured_sensor.m`;  
 if processing sinograms from the measured dataset, use `measured_sinogram.m`;  
 if processing sinograms from the simulated dataset, use `simulated_sinogram.m`.  
@@ -91,27 +92,93 @@ if processing sinograms from the simulated dataset, use `simulated_sinogram.m`.
 The user only needs to modify their own data storage path to complete the image reconstruction.  
 Our sample code provides a single-data processing method. If batch data processing is required, simply add an additional loop for handling.
 
-### 2. Simulation Framework `2_simulation_framework`
+### 2. `simulation_tool`:open-sourced simulation framework codes
 
-This module provides the calibrated MPI simulation framework used to generate large-scale synthetic datasets based on the MJA model.
+This module provides the calibrated MPI simulation framework used to generate large-scale synthetic datasets. We provide 3 sample phantoms, including vascular phantoms and an "S" letter phantom, which users can directly call for demonstration.
 
-**Usage:**
+**Components of the Simulation Tool:**
+##### 1. Dataset
+- **Source**: MNIST dataset is employed as the digital phantom source.
+- **Split**: 60,000 samples for training and 10,000 samples for testing.
 
-**Bash**
+##### 2. Models
+- **Implemented Model**: The framework currently includes the **Langevin Model** for magnetic particle modeling.
+- **Extensibility**: Additional particle models can be incorporated by adding corresponding files to the `Models` folder. To use a new model, update the model index in `Modules/Basic_setups.m`.
 
-```
-# Example: Generate 10000 samples for the limited angle task
-python 2_simulation_framework/generate_data.py --num_samples 10000 --task limited_angle --output_dir <SIM_DATA_PATH>
-```
+##### 3. Noise
+- **Availability**: Background noise files (`noise_k_2.mat` to `noise_k_7.mat`) are provided.
+- **Specifications**: 
+  - The noise is defined in the image domain.
+  - Each noise sample has a size of `[49, 49]`.
+  - It is added directly onto the simulated images.
 
-### 3. Deep Learning Demo `3_deep_learning_demo`
+##### 4. Modules
+The simulation framework is organized into the following modular components:
 
-This module presents deep learning usage examples, typically utilizing the simulated data for pre-training and the measured data for fine-tuning.
+| Module | Description |
+|--------|-------------|
+| `Basic_setups.m` | Configures fundamental parameters, including: <br> • Gradient strength <br> • Excitation magnetic field amplitude <br> • ADC sampling specifications <br> • Nanoparticle type selection |
+| `Magnetic_Field_Generation.m` | Generates the magnetic field required for imaging based on the configurations set in `Basic_setups.m`. |
+| `Phantoms_Load.m` | Loads digital images (e.g., from MNIST) for use as simulation phantoms. |
+| `Signal_Generation.m` | Computes nanoparticle magnetization-induced signals based on the selected particle model (e.g., modified Jiles–Atherton) and the generated magnetic field. |
+| `visualization.m` | Visualizes imaging results, including sinograms and reconstructed images. |
 
-* **Limited-Angle Reconstruction Task:** Focuses on restoring images from limited projection angles.
-* **Sparse-Angle Reconstruction Task:** Focuses on restoring images from a sparse set of projection angles.
+##### 5. Main Function
+- **File**: `main_function.m`
+- **Purpose**: Contains the main simulation pipeline.
+- **Usage**: Execute `main_function.m` to run the complete simulation process.
 
----
+**Running Results:**
+<img width="1920" height="954" alt="Output" src="https://github.com/user-attachments/assets/6320c364-747c-46aa-b32b-6a11c8fcba40" />
+Users can add `save img_simulated_imag.mat img_simulated_imag` to save the output image. 
+
+Similarly, we provide single-image sample code. If users need to run large-scale MNIST data, they can:
+
+1. In `Phantom_Load.m`, **delete or comment out**:
+   - Line 14: `load phantom.mat % loading the example phantom`
+   - Line 15: `train_images = phantom; % change the data type of phantom, if you have multiple phantoms`
+
+2. **Add**:
+   ```matlab
+   img_imag_synomag_2nd(:,:,n) = img_simulated_imag;
+   save img_imag_synomag_2nd.mat img_imag_synomag_2nd
+to create and save batch data.
+
+3. Additionally, in `main_function.m`, modify this line:
+   `N_phantoms = 1; % Number of phantoms to process`
+
+Set the number to define how many MNIST data samples to run.
+
+## 3. `deep_learning_demo`
+
+To demonstrate the dataset's utility in deep learning-based reconstruction, we have developed and open-sourced a demo featuring two representative projection imaging challenges.
+
+#### Reconstruction Scenarios
+
+| Challenge Type | Configuration | Full Configuration |
+| :------------: | :----------: | :---------------: |
+| Limited-angle Reconstruction | 7 angles | 31 angles |
+| Sparse-view Reconstruction | 0°:12°:180° | 0°:3°:180° |
+
+#### Network Architecture
+
+**FBPConvNet Architecture** - A U-Net variant with Filtered Back Projection (FBP) integration, specifically tailored for image reconstruction tasks.
+
+#### Training Configuration
+
+| Parameter | Pre-training Phase | Fine-tuning Phase |
+| :-------: | :----------------: | :---------------: |
+| Dataset | 10,000 simulated phantoms | 80 measured phantoms (training) + 20 (validation) |
+| Epochs | 200 | 200 |
+| Optimizer | Adam | Adam |
+| Learning Rate | 10⁻⁴ | 10⁻⁵ |
+| Loss Function | PSNR loss | PSNR loss |
+| Batch Size | 8 | 8 |
+| GPU | NVIDIA RTX 4090 | NVIDIA RTX 4090 |
+| Environment | Standard deep learning framework with CUDA acceleration | Standard deep learning framework with CUDA acceleration |
+
+#### Demo Results:
+
 
 ## 🖼 Data Examples
 
