@@ -1,4 +1,5 @@
-# 🌟 FFL-MPI-Data
+![论文Figures_12](https://github.com/user-attachments/assets/251a03c5-33a1-4315-838f-49af9d18f561)
+
 
 This repository serves as the official project page for ​**FFL-MPI-Data**​, *A public projection imaging dataset for field free line magnetic particle imaging*.
 
