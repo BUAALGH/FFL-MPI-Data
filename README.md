@@ -12,9 +12,14 @@ The FFL-MPI-Data provides a comprehensive collection of both **measured** and **
 
 ### Dataset Access
 
-The full dataset is available on Zenodo:
+The FFL-MPI-Data (v1.0) is available on Zenodo: https://doi.org/10.5281/zenodo.16563447
+The FFL-MPI-Data (v2.0)-measured dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18184858
+The FFL-MPI-Data (v2.0)-simulated dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18185860
 
-https://doi.org/10.5281/zenodo.16563447
+FFL-MPI-Data (v.2.0) introduces the following changes compared to FFL-MPI-Data (v.1.0):
+(1) Data organization has been restructured around phantoms. Each phantom is stored as an H5 file format, containing both data and metadata. Users can access image data, sine wave plots, and other phantom-specific information, along with metadata such as device scan parameters.
+(2) The metadata includes the following:
+<img width="1059" height="1008" alt="image" src="https://github.com/user-attachments/assets/2e8d071d-c2f7-4558-8f10-a62083d66953" />
 
 ### Authors
 
