@@ -192,10 +192,11 @@ To demonstrate the dataset's utility in deep learning-based reconstruction, we h
 
 #### Reconstruction Scenarios
 
-| Challenge Type | Configuration | Full Configuration |
+| Challenge Type | rotation angles | angle numbers |
 | :------------: | :----------: | :---------------: |
-| Limited-angle Reconstruction | 16 angles | 31 angles |
-| Sparse-view Reconstruction | 0°:12°:180° | 0°:3°:90° |
+| Full-angle configuration | 0°:3°:180° | 61 angles |
+| Limited-angle Reconstruction | 0°:3°:90° | 31 angles |
+| Sparse-view Reconstruction | 0°:12°:180° | 16 angles |
 
 #### Network Architecture
 
