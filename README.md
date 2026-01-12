@@ -25,7 +25,31 @@ FFL-MPI-Data (v.2.0) introduces the following changes compared to FFL-MPI-Data (
 
 (2) The metadata includes the following:
 
-<img width="1050" height="1008" alt="image" src="https://github.com/user-attachments/assets/2c75e332-d0f5-4531-8b14-95f26d7a4aa9" />
+| Group data | Data Name | Description |
+| --- | --- | --- |
+| data | /image/imag | Data matrix: Imaginary part of the reconstructed images by FBP. |
+|  | /image/real | Data matrix: Real part of the reconstructed images by FBP. |
+|  | /sinogram/imag | Sinogram matrix: Imaginary part of the constructed sinogram. |
+|  | /sinogram/real | Sinogram matrix: Real part of the constructed sinogram. |
+| Metadata | Attribute Name | Description |
+| Project | /Project_Name | FFL-MPI-Data: An open-source dataset focused on Field Free Line (FFL) Magnetic Particle Imaging reconstruction. |
+|  | /Institution | Beihang University (BUAA): The primary research facility responsible for data acquisition and validation. |
+|  | /Test_Year | 2025: Representing the latest imaging protocols and hardware in MPI. |
+| Tags | /Dataset_type | measured dataset / simulated dataset: Confirms the data is acquired from physical hardware or numerical simulation. |
+|  | /Phantom_number | phantom-n: A unique identifier for the specific phantom geometry (e.g., phantom-1 to phantom-100). |
+|  | /Domain _type | image / sinogram / voltage signal: Categorizes the entry as image-domain, sinogram domain or sensor domain data. |
+| System | /Scanner_Type | Open FFL-MPI Scanner / simulation: A custom-built system featuring an open-sided FFL-MPI. |
+|  | /Gradient | 1.5 T/m: The selection field gradient strength, defining the spatial encoding precision and affecting the spatial resolution of images. |
+|  | /Drive_Field | 4 mT @ 3 kHz, Sine: The excitation magnetic field used to induce non-linear magnetization responses in the SPIOs, influencing the SNR of images. |
+|  | /Focus_Field | 15 mT @ 1 Hz, Triangle: The field used to shift the FFL across the FOV in a linear scanning motion, defining the image size. |
+| Imaging | /Image_Size | [49, 49, 6]: Spatial dimensions of 49×49 pixels across 6 harmonics (from the 2nd to the 7th harmonic order) for multi-harmonic analysis. |
+|  | /FOV | 20 mm × 20 mm: The effective scanning area, resulting in a pixel resolution of approximately 0.4 mm. |
+|  | /Scan_Sequence | Discrete Rotation (2D): A projection-based scanning protocol rotating the FFL from 0° to 180° with a 3° angular increment. |
+|  | /DAQ_Hardware | NI PCIe-6347 & BNC-2120: High-speed data acquisition system ensuring signal recording. |
+|  | /Sampling_Rate | 3 MHz: High-speed sampling to capture high-order harmonics. |
+|  | /Duration | 1.0 s: Signal integration time per projection angle. |
+| Particle | /Particle_Type | Synomag-70nm: Specialized SPIONs for high harmonic response and sensitivity in MPI systems. |
+|  | /Concentration | 10 mg/ml Fe: The undiluted iron concentration of the tracer. |
 
 
 ### Authors
