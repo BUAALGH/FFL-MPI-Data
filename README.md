@@ -16,7 +16,7 @@ The **FFL-MPI-Data - measured dataset** is available on Zenodo: https://doi.org/
 
 The **FFL-MPI-Data - simulated dataset** is available on Zenodo: https://doi.org/10.5281/zenodo.18185860
 
-The current version of FFL-MPI-Data provides the following information::
+The current version of FFL-MPI-Data provides the following information:
 
 (1) Data organization has been restructured around **phantoms**. Each phantom is stored as an H5 file format, containing both data and metadata. Users can access image data, sinograms, and other phantom-specific information, along with metadata such as device scan parameters.
 
