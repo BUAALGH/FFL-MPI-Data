@@ -12,9 +12,9 @@ The FFL-MPI-Data provides a comprehensive collection of both **measured** and **
 
 ### Dataset Access
 
-The FFL-MPI-Data - measured dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18184858
+The **FFL-MPI-Data - measured dataset** is available on Zenodo: https://doi.org/10.5281/zenodo.18184858
 
-The FFL-MPI-Data - simulated dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18185860
+The **FFL-MPI-Data - simulated dataset** is available on Zenodo: https://doi.org/10.5281/zenodo.18185860
 
 The current version of FFL-MPI-Data provides the following information::
 
