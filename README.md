@@ -12,16 +12,13 @@ The FFL-MPI-Data provides a comprehensive collection of both **measured** and **
 
 ### Dataset Access
 
-The FFL-MPI-Data (v1.0) is available on Zenodo: https://doi.org/10.5281/zenodo.16563447
+The FFL-MPI-Data - measured dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18184858
 
-The FFL-MPI-Data (v2.0)-measured dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18184858
+The FFL-MPI-Data - simulated dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18185860
 
-The FFL-MPI-Data (v2.0)-simulated dataset is available on Zenodo: https://doi.org/10.5281/zenodo.18185860
+The current version of FFL-MPI-Data provides the following information::
 
-
-FFL-MPI-Data (v.2.0) introduces the following changes compared to FFL-MPI-Data (v.1.0):
-
-(1) Data organization has been restructured around phantoms. Each phantom is stored as an H5 file format, containing both data and metadata. Users can access image data, sine wave plots, and other phantom-specific information, along with metadata such as device scan parameters.
+(1) Data organization has been restructured around **phantoms**. Each phantom is stored as an H5 file format, containing both data and metadata. Users can access image data, sinograms, and other phantom-specific information, along with metadata such as device scan parameters.
 
 (2) The metadata includes the following:
 
@@ -81,6 +78,8 @@ The dataset is categorized into two main groups:
 
 The construction of the FFL-MPI-Data involves careful processing from raw signal acquisition (measured) or Langevin modeling (simulated) to the final sinogram and image domains.
 
+![figure1](https://github.com/user-attachments/assets/63b1de42-f8c4-4e1f-9e7b-acaef316c473)
+
 ---
 
 ## 📂 Folder Structure and Directory
@@ -128,6 +127,23 @@ if processing sinograms from the simulated dataset, use `simulated_sinogram.m`.
 
 The user only needs to modify their own data storage path to complete the image reconstruction.  
 Our sample code provides a single-data processing method. If batch data processing is required, simply add an additional loop for handling.
+
+The method for reading **.h5**__ files is as follows (the example code was written in **MATLAB**__; users may modify it according to their own environment):
+
+To read the metadata of an .h5 file, use the following code:
+
+`h5readatt(filepath, ‘/’,'Phantom_number')`
+
+To read the imaginary component image of an .h5 file's image domain, use the following code:
+
+`data = h5read(filepath, ‘/data/image/imag’);`
+
+To read the imaginary component data of the sinogram domain from an h5 file, use the following code:
+
+`data = h5read(filepath, ‘/data/sinogram/imag’);`
+
+_filepath_ represents the address of your file.
+
 
 ### 2. `simulation_tool`:open-sourced simulation framework codes
 
