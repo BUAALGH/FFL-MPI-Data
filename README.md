@@ -22,6 +22,11 @@ The current version of FFL-MPI-Data provides the following information::
 
 (2) The metadata includes the following:
 
+<small>
+<small>
+<small>
+<small>
+ 
 | Group data | Data Name | Description |
 | --- | --- | --- |
 | data | /image/imag | Data matrix: Imaginary part of the reconstructed images by FBP. |
@@ -47,7 +52,10 @@ The current version of FFL-MPI-Data provides the following information::
 |  | /Duration | 1.0 s: Signal integration time per projection angle. |
 | Particle | /Particle_Type | Synomag-70nm: Specialized SPIONs for high harmonic response and sensitivity in MPI systems. |
 |  | /Concentration | 10 mg/ml Fe: The undiluted iron concentration of the tracer. |
-
+</small>
+</small>
+</small>
+</small>
 
 ### Authors
 
