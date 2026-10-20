@@ -17,7 +17,7 @@ T = 293.15;            % Absolute Temperature (e.g., room temperature) [K]
 % Parameters for SPIOs.
 D = 70e-9;             % Magnetic core diameter [m]
 V = 1/6 * pi * D^3;    % volume of particle
-Ms = 3e4;
+Ms = 4.0e5;
 m = V * Ms;            % Effective magnetic moment per particle [A*m^2]
 
 % Langevin Parameter (used in Langevin Model)
